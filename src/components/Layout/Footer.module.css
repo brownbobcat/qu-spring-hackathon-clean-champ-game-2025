@@ -1,0 +1,91 @@
+/* src/components/Layout/Footer.module.css */
+.footer {
+  background-color: #1f2937; /* gray-800 */
+  color: white;
+  padding: 1.5rem 0;
+  margin-top: 2rem;
+}
+
+.container {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.branding {
+  margin-bottom: 1rem;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.logoWhite {
+  color: white;
+}
+
+.logoYellow {
+  color: #fde047; /* yellow-300 */
+}
+
+.slogan {
+  color: #9ca3af; /* gray-400 */
+  font-size: 0.875rem;
+}
+
+.links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.linksColumn {
+  flex: 1;
+}
+
+.linksTitle {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.linksList {
+  list-style-type: none;
+  font-size: 0.875rem;
+  color: #9ca3af; /* gray-400 */
+}
+
+.linksItem {
+  margin-bottom: 0.25rem;
+}
+
+.copyright {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #374151; /* gray-700 */
+  text-align: center;
+  font-size: 0.875rem;
+  color: #9ca3af; /* gray-500 */
+}
+
+.techStack {
+  margin-top: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .branding {
+    margin-bottom: 0;
+  }
+}

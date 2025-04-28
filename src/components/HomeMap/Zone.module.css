@@ -1,0 +1,64 @@
+/* src/components/HomeMap/Zone.module.css */
+.zone {
+  position: absolute;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 0.5rem;
+  border-width: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.zoneClaimed {
+  border-color: #1f2937; /* gray-800 */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.zoneUnclaimed {
+  border-color: #9ca3af; /* gray-400 */
+}
+
+.zoneUnclaimed:hover {
+  border-color: #4b5563; /* gray-600 */
+}
+
+.zoneClaimedByCurrentUser {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: scale(1.05);
+}
+
+.zoneName {
+  font-weight: bold;
+  color: #1f2937; /* gray-800 */
+}
+
+.claimedText {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: #1f2937; /* gray-800 */
+}
+
+.progressContainer {
+  margin-top: 0.5rem;
+  width: 100%;
+  background-color: #e5e7eb; /* gray-200 */
+  border-radius: 9999px;
+  height: 0.625rem;
+}
+
+.progressBar {
+  background-color: #2563eb; /* blue-600 */
+  height: 0.625rem;
+  border-radius: 9999px;
+}
+
+.taskCount {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}

@@ -1,0 +1,77 @@
+/* src/components/TaskManagement/TaskList.module.css */
+.container {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  color: #6b7280; /* gray-600 */
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.statsBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.statsText {
+  font-size: 0.875rem;
+  color: #6b7280; /* gray-600 */
+}
+
+.pointsBadge {
+  background-color: #dbeafe; /* blue-100 */
+  color: #1e40af; /* blue-800 */
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.progressContainer {
+  margin-bottom: 1rem;
+  width: 100%;
+  background-color: #e5e7eb; /* gray-200 */
+  border-radius: 9999px;
+  height: 0.5rem;
+}
+
+.progressBar {
+  background-color: #2563eb; /* blue-600 */
+  height: 0.5rem;
+  border-radius: 9999px;
+  transition: all 0.5s;
+}
+
+.sectionTitle {
+  font-weight: bold;
+  color: #4b5563; /* gray-700 */
+  margin-bottom: 0.5rem;
+}
+
+.allCompleted {
+  text-align: center;
+  padding: 1.5rem 0;
+  margin-bottom: 1rem;
+}
+
+.checkmark {
+  color: #22c55e; /* green-500 */
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.allCompletedText {
+  color: #6b7280; /* gray-600 */
+}

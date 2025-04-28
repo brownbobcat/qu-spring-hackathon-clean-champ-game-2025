@@ -1,0 +1,82 @@
+/* src/components/Challenges/ChallengesPage.module.css */
+.container {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.noUserMessage {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.messageTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.messageText {
+  color: #6b7280; /* gray-600 */
+  margin-bottom: 1rem;
+}
+
+.profileButton {
+  background-color: #2563eb; /* blue-600 */
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.profileButton:hover {
+  background-color: #1d4ed8; /* blue-700 */
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.activeIcon {
+  color: #2563eb; /* blue-600 */
+  animation: pulse 2s infinite;
+  margin-right: 0.5rem;
+}
+
+.sectionContainer {
+  margin-bottom: 2rem;
+}
+
+.noDataMessage {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.noDataTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.noDataText {
+  color: #6b7280; /* gray-600 */
+}

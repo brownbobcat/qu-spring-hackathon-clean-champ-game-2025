@@ -1,0 +1,145 @@
+.taskItem {
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  transition: all 0.3s;
+}
+
+.taskCompleted {
+  background-color: #f3f4f6; /* gray-100 */
+  border-color: #d1d5db; /* gray-300 */
+}
+
+.taskIncomplete {
+  background-color: white;
+  border-color: #b3b3b4; /* gray-200 */
+  border: 1px solid #e1e1e1;
+}
+
+.taskIncomplete:hover {
+  border-color: #93c5fd; /* blue-300 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.taskHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.taskTitle {
+  font-weight: bold;
+}
+
+.taskTitleCompleted {
+  text-decoration: line-through;
+  color: #6b7280; /* gray-500 */
+}
+
+.difficultyBadge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+}
+
+.easyBadge {
+  background-color: #dcfce7; /* green-100 */
+  color: #166534; /* green-800 */
+}
+
+.mediumBadge {
+  background-color: #fef9c3; /* yellow-100 */
+  color: #854d0e; /* yellow-800 */
+}
+
+.hardBadge {
+  background-color: #fee2e2; /* red-100 */
+  color: #991b1b; /* red-800 */
+}
+
+.taskDescription {
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.taskDescriptionCompleted {
+  color: #6b7280; /* gray-500 */
+}
+
+.taskFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timeInfo {
+  display: flex;
+  align-items: center;
+}
+
+.timeIcon {
+  color: #eab308; /* yellow-500 */
+  margin-right: 0.25rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.timeText {
+  font-size: 0.875rem;
+  color: #6b7280; /* gray-600 */
+}
+
+.pointsInfo {
+  display: flex;
+  align-items: center;
+}
+
+.pointsIcon {
+  color: #2563eb; /* blue-500 */
+  margin-right: 0.25rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.pointsText {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #2563eb; /* blue-600 */
+}
+
+.completeButton {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: #16a34a; /* green-600 */
+  color: white;
+  transition: background-color 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.completeButton:hover {
+  background-color: #15803d; /* green-700 */
+}
+
+.completeButton:disabled {
+  background-color: #d1d5db; /* gray-300 */
+  color: #6b7280; /* gray-500 */
+  cursor: not-allowed;
+}
+
+.completedBadge {
+  padding: 0.25rem 0.75rem;
+  background-color: #e5e7eb; /* gray-200 */
+  color: #4b5563; /* gray-600 */
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.completionInfo {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #6b7280; /* gray-500 */
+}

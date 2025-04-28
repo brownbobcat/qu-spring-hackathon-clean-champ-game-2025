@@ -1,0 +1,92 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.mapContainer {
+  width: 100%;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.map {
+  position: relative;
+  border: 2px solid var(--gray-300);
+  border-radius: 0.75rem;
+  width: 100%;
+  height: 500px;
+  background-color: #f9f9f9;
+}
+
+.info {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.zoneTitle {
+  font-weight: 700;
+}
+
+.zoneDescription {
+  font-size: 0.875rem;
+  color: var(--gray-600);
+}
+
+.claimButton {
+  background-color: var(--blue-600);
+  color: white;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.claimButton:hover {
+  background-color: var(--blue-700);
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.badgeGreen {
+  background-color: var(--green-100);
+  color: var(--green-800);
+}
+
+.badgeYellow {
+  background-color: var(--yellow-100);
+  color: var(--yellow-800);
+}
+
+/* Media queries for responsive design */
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .mapContainer {
+    width: 66.666667%;
+  }
+
+  .tasksContainer {
+    width: 33.333333%;
+  }
+}
