@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import styles from "./Achievements.module.css";
-import { Achievement as AchievementType } from "../../types";
 import { useUser } from "../../context/UserContext";
 
 const Achievements: React.FC = () => {
-  const { currentUser, users } = useUser();
+  const { currentUser } = useUser();
 
   if (!currentUser) {
     return (

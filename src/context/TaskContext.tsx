@@ -289,7 +289,6 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
   const [tasks, setTasks] = useState<Task[]>([]);
   const [timedChallenges, setTimedChallenges] = useState<TimedChallenge[]>([]);
   const {
-    currentUser,
     updateUserPoints,
     completeTask: markTaskCompletedForUser,
     unlockAchievement,
@@ -406,50 +405,7 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   };
 
-  // const completeTask = (taskId: string, userId: string) => {
-  //   const task = tasks.find((t) => t.id === taskId);
-  //   if (!task) return;
-
-  //   const updatedTasks = tasks.map((t) => {
-  //     if (t.id === taskId) {
-  //       return {
-  //         ...t,
-  //         isCompleted: true,
-  //         completedBy: userId,
-  //         completedAt: new Date().toISOString(),
-  //       };
-  //     }
-  //     return t;
-  //   });
-
-  //   saveData(undefined, updatedTasks);
-
-  //   // Update user points and mark task as completed
-  //   updateUserPoints(userId, task.pointValue);
-  //   markTaskCompletedForUser(userId, taskId);
-
-  //   // Check if this completes any active challenge
-  //   const activeChallenge = timedChallenges.find(
-  //     (c) =>
-  //       c.isActive && c.startedAt && c.tasks.includes(taskId) && !c.completedAt
-  //   );
-
-  //   if (activeChallenge) {
-  //     const allChallengeTasksCompleted = activeChallenge.tasks.every(
-  //       (taskId) => updatedTasks.find((t) => t.id === taskId)?.isCompleted
-  //     );
-
-  //     if (allChallengeTasksCompleted) {
-  //       const startTime = new Date(activeChallenge.startedAt || "").getTime();
-  //       const endTime = new Date().getTime();
-  //       const timeSpentSeconds = Math.floor((endTime - startTime) / 1000);
-
-  //       completeChallenge(activeChallenge.id, userId, timeSpentSeconds);
-  //     }
-  //   }
-  // };
-
-  const startChallenge = (challengeId: string, userId: string) => {
+  const startChallenge = (challengeId: string) => {
     const updatedChallenges = timedChallenges.map((challenge) => {
       if (challenge.id === challengeId) {
         return {

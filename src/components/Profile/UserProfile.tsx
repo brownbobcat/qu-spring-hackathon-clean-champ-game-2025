@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./UserProfile.module.css";
 import Avatar from "./Avatar";
 import { useUser } from "../../context/UserContext";

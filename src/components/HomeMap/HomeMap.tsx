@@ -7,7 +7,7 @@ import { useTask } from "../../context/TaskContext";
 import { useUser } from "../../context/UserContext";
 
 const HomeMap: React.FC = () => {
-  const { zones, claimZone, getTasksByZone } = useTask();
+  const { zones, claimZone } = useTask();
   const { currentUser } = useUser();
   const [selectedZone, setSelectedZone] = useState<string | null>(null);
 

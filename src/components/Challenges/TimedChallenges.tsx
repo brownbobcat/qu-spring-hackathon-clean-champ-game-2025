@@ -12,26 +12,20 @@ const TimedChallenge: React.FC<TimedChallengeProps> = ({ challenge }) => {
   const { tasks, startChallenge, abandonChallenge } = useTask();
   const { currentUser } = useUser();
 
-  // State to track time remaining
   const [timeRemaining, setTimeRemaining] = useState<number | null>(null);
-  // State to track completed tasks count
   const [completedTasksCount, setCompletedTasksCount] = useState(0);
 
-  // Get challenge tasks with details
   const challengeTasks = challenge.tasks
     .map((taskId) => tasks.find((t) => t.id === taskId))
     .filter((task) => task !== undefined);
 
-  // Format time for display (MM:SS)
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
   };
 
-  // Effect to calculate and update time remaining for active challenges
   useEffect(() => {
-    // Only run for active challenges with a startedAt time
     if (!challenge.isActive || !challenge.startedAt) {
       setTimeRemaining(null);
       return;
