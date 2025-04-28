@@ -35,7 +35,7 @@ const Zone: React.FC<ZoneProps> = ({ zone, onClick }) => {
         top: `${zone.position.y}%`,
         width: `${zone.position.width}%`,
         height: `${zone.position.height}%`,
-        backgroundColor: `${zone.color}${isClaimed ? "80" : "50"}`, // Add transparency
+        backgroundColor: `${zone.color}${isClaimed ? "80" : "50"}`,
       }}
     >
       <h3 className={styles.zoneName}>{zone.name}</h3>
