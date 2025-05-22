@@ -11,7 +11,6 @@ const Avatar: React.FC<AvatarProps> = ({
   size = "md",
   className = "",
 }) => {
-  // Array of avatar emoji options
   const avatarOptions = [
     "👧",
     "👦",
@@ -30,14 +29,12 @@ const Avatar: React.FC<AvatarProps> = ({
     "🤴",
   ];
 
-  // Size classes
   const sizeClasses = {
     sm: "w-8 h-8 text-lg",
     md: "w-12 h-12 text-2xl",
     lg: "w-16 h-16 text-4xl",
   };
 
-  // Get avatar emoji or default
   const avatarEmoji = avatarOptions[avatarId % avatarOptions.length] || "👤";
 
   return (

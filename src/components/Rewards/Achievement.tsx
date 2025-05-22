@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import styles from "./Achievements.module.css";
 import { useUser } from "../../context/UserContext";
@@ -19,7 +18,6 @@ const Achievements: React.FC = () => {
     );
   }
 
-  // Group achievements by status (unlocked/locked)
   const unlockedAchievements = currentUser.achievements.filter(
     (achievement) => achievement.unlockedAt !== null
   );

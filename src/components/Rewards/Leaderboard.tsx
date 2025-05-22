@@ -6,7 +6,6 @@ import { useUser } from "../../context/UserContext";
 const Leaderboard: React.FC = () => {
   const { users } = useUser();
 
-  // Sort users by points in descending order
   const sortedUsers = [...users].sort((a, b) => b.points - a.points);
 
   return (

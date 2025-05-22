@@ -1,7 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// src/utils/localStorage.ts
-
-// Save data to localStorage
 export const saveToLocalStorage = (key: string, data: any): void => {
   try {
     const serializedData = JSON.stringify(data);
@@ -11,7 +8,6 @@ export const saveToLocalStorage = (key: string, data: any): void => {
   }
 };
 
-// Get data from localStorage
 export const getFromLocalStorage = (key: string): any => {
   try {
     const serializedData = localStorage.getItem(`cleanchamp_${key}`);
@@ -25,7 +21,6 @@ export const getFromLocalStorage = (key: string): any => {
   }
 };
 
-// Remove data from localStorage
 export const removeFromLocalStorage = (key: string): void => {
   try {
     localStorage.removeItem(`cleanchamp_${key}`);
@@ -34,7 +29,6 @@ export const removeFromLocalStorage = (key: string): void => {
   }
 };
 
-// Clear all CleanChamp data from localStorage
 export const clearCleanChampData = (): void => {
   try {
     Object.keys(localStorage).forEach((key) => {

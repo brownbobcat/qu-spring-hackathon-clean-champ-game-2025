@@ -11,7 +11,6 @@
   padding: 0;
 }
 
-/* Animation for confetti effect when completing tasks */
 @keyframes confetti {
   0% {
     transform: translateY(0) rotate(0deg);
@@ -27,7 +26,6 @@
   animation: confetti 1s ease-out forwards;
 }
 
-/* Pulsing animation for active elements */
 @keyframes pulse-effect {
   0% {
     box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);

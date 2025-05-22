@@ -15,7 +15,6 @@ const ChallengesPage: React.FC = () => {
 
   const { currentUser } = useUser();
 
-  // Get challenges using the new helper functions
   const activeChallenges = getActiveChallenges();
   const availableChallenges = getAvailableChallenges();
   const completedChallenges = currentUser

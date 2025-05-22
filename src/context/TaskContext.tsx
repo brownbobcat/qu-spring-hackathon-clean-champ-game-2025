@@ -1,10 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { createContext, useState, useContext, useEffect } from "react";
 import { Task, Zone, TaskDifficulty, TimedChallenge } from "../types";
 import { getFromLocalStorage, saveToLocalStorage } from "../utils/localStorage";
 import { useUser } from "./UserContext";
 
-// Sample data for predefined zones in the house
 const DEFAULT_ZONES: Zone[] = [
   {
     id: "kitchen",
@@ -13,7 +11,7 @@ const DEFAULT_ZONES: Zone[] = [
     claimedBy: null,
     claimedAt: null,
     position: { x: 10, y: 10, width: 30, height: 20 },
-    color: "#FFD700", // Gold
+    color: "#FFD700",
   },
   {
     id: "living-room",
@@ -22,7 +20,7 @@ const DEFAULT_ZONES: Zone[] = [
     claimedBy: null,
     claimedAt: null,
     position: { x: 40, y: 10, width: 30, height: 20 },
-    color: "#87CEEB", // Sky Blue
+    color: "#87CEEB",
   },
   {
     id: "bathroom",
@@ -31,7 +29,7 @@ const DEFAULT_ZONES: Zone[] = [
     claimedBy: null,
     claimedAt: null,
     position: { x: 10, y: 40, width: 20, height: 20 },
-    color: "#98FB98", // Pale Green
+    color: "#98FB98",
   },
   {
     id: "bedroom",
@@ -40,13 +38,11 @@ const DEFAULT_ZONES: Zone[] = [
     claimedBy: null,
     claimedAt: null,
     position: { x: 40, y: 40, width: 30, height: 30 },
-    color: "#DDA0DD", // Plum
+    color: "#DDA0DD",
   },
 ];
 
-// Sample predefined tasks for each zone
 const DEFAULT_TASKS: Task[] = [
-  // Kitchen tasks
   {
     id: "task-1",
     zoneId: "kitchen",
@@ -83,7 +79,7 @@ const DEFAULT_TASKS: Task[] = [
     completedAt: null,
     estimatedTimeMinutes: 15,
   },
-  // Living room tasks
+
   {
     id: "task-4",
     zoneId: "living-room",
@@ -108,7 +104,7 @@ const DEFAULT_TASKS: Task[] = [
     completedAt: null,
     estimatedTimeMinutes: 8,
   },
-  // Bathroom tasks
+
   {
     id: "task-6",
     zoneId: "bathroom",
@@ -133,7 +129,7 @@ const DEFAULT_TASKS: Task[] = [
     completedAt: null,
     estimatedTimeMinutes: 20,
   },
-  // Bedroom tasks
+
   {
     id: "task-8",
     zoneId: "bedroom",
@@ -161,13 +157,12 @@ const DEFAULT_TASKS: Task[] = [
 ];
 
 const NEW_CHALLENGES: TimedChallenge[] = [
-  // Add to your existing challenges
   {
     id: "challenge-3",
     title: "Full House Sweep",
     description: "Complete one task in each zone of the house",
-    timeLimit: 1800, // 30 minutes in seconds
-    tasks: ["task-1", "task-4", "task-6", "task-8"], // One task from each zone
+    timeLimit: 1800,
+    tasks: ["task-1", "task-4", "task-6", "task-8"],
     bonusPoints: 75,
     isActive: false,
     startedAt: null,
@@ -178,8 +173,8 @@ const NEW_CHALLENGES: TimedChallenge[] = [
     id: "challenge-4",
     title: "Hard Task Marathon",
     description: "Complete all hard difficulty tasks in the house",
-    timeLimit: 3600, // 60 minutes in seconds
-    tasks: ["task-7", "task-9"], // All hard tasks
+    timeLimit: 3600,
+    tasks: ["task-7", "task-9"],
     bonusPoints: 100,
     isActive: false,
     startedAt: null,
@@ -190,8 +185,8 @@ const NEW_CHALLENGES: TimedChallenge[] = [
     id: "challenge-5",
     title: "Morning Refresh",
     description: "Start your day with quick cleaning tasks",
-    timeLimit: 600, // 10 minutes in seconds
-    tasks: ["task-2", "task-5", "task-8"], // Easy, quick tasks
+    timeLimit: 600,
+    tasks: ["task-2", "task-5", "task-8"],
     bonusPoints: 30,
     isActive: false,
     startedAt: null,
@@ -202,8 +197,8 @@ const NEW_CHALLENGES: TimedChallenge[] = [
     id: "challenge-6",
     title: "Weekend Deep Clean",
     description: "Tackle the most time-consuming tasks",
-    timeLimit: 5400, // 90 minutes in seconds
-    tasks: ["task-3", "task-4", "task-7", "task-9"], // Longer tasks
+    timeLimit: 5400,
+    tasks: ["task-3", "task-4", "task-7", "task-9"],
     bonusPoints: 120,
     isActive: false,
     startedAt: null,
@@ -214,8 +209,8 @@ const NEW_CHALLENGES: TimedChallenge[] = [
     id: "challenge-7",
     title: "Last Minute Tidy",
     description: "Quick cleanup before guests arrive",
-    timeLimit: 900, // 15 minutes in seconds
-    tasks: ["task-2", "task-5", "task-8"], // Visible area quick fixes
+    timeLimit: 900,
+    tasks: ["task-2", "task-5", "task-8"],
     bonusPoints: 35,
     isActive: false,
     startedAt: null,
@@ -224,13 +219,12 @@ const NEW_CHALLENGES: TimedChallenge[] = [
   },
 ];
 
-// Default timed challenges
 const DEFAULT_CHALLENGES: TimedChallenge[] = [
   {
     id: "challenge-1",
     title: "Kitchen Speed Clean",
     description: "Complete all kitchen tasks in record time",
-    timeLimit: 1200, // 20 minutes in seconds
+    timeLimit: 1200,
     tasks: ["task-1", "task-2", "task-3"],
     bonusPoints: 50,
     isActive: false,
@@ -242,7 +236,7 @@ const DEFAULT_CHALLENGES: TimedChallenge[] = [
     id: "challenge-2",
     title: "Bathroom Blitz",
     description: "Make the bathroom shine quickly",
-    timeLimit: 900, // 15 minutes in seconds
+    timeLimit: 900,
     tasks: ["task-6", "task-7"],
     bonusPoints: 40,
     isActive: false,
@@ -295,7 +289,6 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
   } = useUser();
 
   useEffect(() => {
-    // Load data from localStorage or use defaults
     const storedZones = getFromLocalStorage("zones") || DEFAULT_ZONES;
     const storedTasks = getFromLocalStorage("tasks") || DEFAULT_TASKS;
     const storedChallenges =
@@ -341,7 +334,6 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
 
     saveData(updatedZones);
 
-    // Check if user has claimed all zones to unlock the Zone Master achievement
     const userClaimedZones = updatedZones.filter(
       (zone) => zone.claimedBy === userId
     );
@@ -359,7 +351,6 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
       return;
     }
 
-    // Update tasks array
     const updatedTasks = tasks.map((t) => {
       if (t.id === taskId) {
         return {
@@ -372,17 +363,13 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
       return t;
     });
 
-    // Save updated tasks
     saveData(undefined, updatedTasks);
 
     console.log(`Task points value: ${task.pointValue}`);
 
-    // Update user points FIRST, then mark task as completed
-    // This ensures points are properly awarded before any other logic runs
     updateUserPoints(userId, task.pointValue);
     markTaskCompletedForUser(userId, taskId);
 
-    // Now check for challenge completion
     const activeChallenge = timedChallenges.find(
       (c) =>
         c.isActive && c.startedAt && c.tasks.includes(taskId) && !c.completedAt
@@ -435,7 +422,6 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
       return;
     }
 
-    // Update challenges array
     const updatedChallenges = timedChallenges.map((c) => {
       if (c.id === challengeId) {
         return {
@@ -448,53 +434,18 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
       return c;
     });
 
-    // Save updated challenges
     saveData(undefined, undefined, updatedChallenges);
 
-    // Award bonus points if completed within time limit
     if (timeSpentSeconds <= challenge.timeLimit) {
       console.log(
         `Awarding ${challenge.bonusPoints} bonus points for completing challenge in time`
       );
 
-      // Do this AFTER updating challenges to ensure proper state
       updateUserPoints(userId, challenge.bonusPoints);
 
-      // Unlock Speed Demon achievement
       unlockAchievement(userId, "achievement-2");
     }
   };
-
-  // const completeChallenge = (
-  //   challengeId: string,
-  //   userId: string,
-  //   timeSpentSeconds: number
-  // ) => {
-  //   const challenge = timedChallenges.find((c) => c.id === challengeId);
-  //   if (!challenge) return;
-
-  //   const updatedChallenges = timedChallenges.map((c) => {
-  //     if (c.id === challengeId) {
-  //       return {
-  //         ...c,
-  //         isActive: false,
-  //         completedAt: new Date().toISOString(),
-  //         completedBy: userId,
-  //       };
-  //     }
-  //     return c;
-  //   });
-
-  //   saveData(undefined, undefined, updatedChallenges);
-
-  //   // Award bonus points if completed within time limit
-  //   if (timeSpentSeconds <= challenge.timeLimit) {
-  //     updateUserPoints(userId, challenge.bonusPoints);
-
-  //     // Unlock Speed Demon achievement
-  //     unlockAchievement(userId, "achievement-2");
-  //   }
-  // };
 
   const getTasksByZone = (zoneId: string) => {
     return tasks.filter((task) => task.zoneId === zoneId);
@@ -533,19 +484,16 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
     return { totalTasks, completedTasks, timeRemaining, isExpired };
   };
 
-  // Get available challenges (not active or completed)
   const getAvailableChallenges = () => {
     return timedChallenges.filter(
       (challenge) => !challenge.isActive && !challenge.completedAt
     );
   };
 
-  // Get active challenges
   const getActiveChallenges = () => {
     return timedChallenges.filter((challenge) => challenge.isActive);
   };
 
-  // Get completed challenges
   const getCompletedChallenges = (userId?: string) => {
     return timedChallenges.filter(
       (challenge) =>
@@ -553,7 +501,6 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
     );
   };
 
-  // Abandon a challenge
   const abandonChallenge = (challengeId: string) => {
     const updatedChallenges = timedChallenges.map((c) => {
       if (c.id === challengeId) {
@@ -582,7 +529,7 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
         getTasksByZone,
         getZoneById,
         resetData,
-        // New methods
+
         getChallengeProgress,
         getAvailableChallenges,
         getActiveChallenges,

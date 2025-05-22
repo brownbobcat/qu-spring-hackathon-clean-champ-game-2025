@@ -31,36 +31,29 @@ const TimedChallenge: React.FC<TimedChallengeProps> = ({ challenge }) => {
       return;
     }
 
-    // Calculate initial time remaining
     const calculateTimeRemaining = () => {
       const startTime = new Date(challenge.startedAt || "").getTime();
       const currentTime = new Date().getTime();
       const elapsedSeconds = Math.floor((currentTime - startTime) / 1000);
       const remaining = challenge.timeLimit - elapsedSeconds;
 
-      // Don't go below zero
       return remaining > 0 ? remaining : 0;
     };
 
-    // Set initial time
     setTimeRemaining(calculateTimeRemaining());
 
-    // Create timer that updates every second
     const timerInterval = setInterval(() => {
       const remaining = calculateTimeRemaining();
       setTimeRemaining(remaining);
 
-      // If time runs out, clear the interval
       if (remaining <= 0) {
         clearInterval(timerInterval);
       }
     }, 1000);
 
-    // Clean up interval on unmount or if challenge becomes inactive
     return () => clearInterval(timerInterval);
   }, [challenge.isActive, challenge.startedAt, challenge.timeLimit]);
 
-  // Effect to count completed tasks
   useEffect(() => {
     if (challenge.isActive) {
       const count = challengeTasks.filter((task) => task?.isCompleted).length;
@@ -78,12 +71,10 @@ const TimedChallenge: React.FC<TimedChallengeProps> = ({ challenge }) => {
     abandonChallenge(challenge.id);
   };
 
-  // Determine the challenge status
   let statusElement = null;
   let actionButton = null;
 
   if (challenge.completedAt) {
-    // Completed challenge
     const completionDate = new Date(challenge.completedAt).toLocaleDateString();
     statusElement = (
       <div className={styles.completedStatus}>
@@ -91,7 +82,6 @@ const TimedChallenge: React.FC<TimedChallengeProps> = ({ challenge }) => {
       </div>
     );
   } else if (challenge.isActive) {
-    // Active challenge
     const timeDisplay =
       timeRemaining !== null
         ? timeRemaining > 0
@@ -136,7 +126,6 @@ const TimedChallenge: React.FC<TimedChallengeProps> = ({ challenge }) => {
       </button>
     );
   } else {
-    // Available challenge
     actionButton = (
       <button
         onClick={handleStartChallenge}

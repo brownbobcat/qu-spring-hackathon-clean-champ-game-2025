@@ -4,13 +4,11 @@ import styles from "./UserProfile.module.css";
 import Avatar from "./Avatar";
 import { useUser } from "../../context/UserContext";
 
-// Available avatar options for selection
 const AVATAR_OPTIONS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
 const UserProfile = () => {
   const { currentUser, users, createUser, setCurrentUser } = useUser();
 
-  // This state controls whether the user creation form is shown
   const [isCreatingUser, setIsCreatingUser] = useState(false);
   const [newUserName, setNewUserName] = useState("");
   const [selectedAvatar, setSelectedAvatar] = useState(0);
@@ -26,9 +24,7 @@ const UserProfile = () => {
     }
   };
 
-  // The key issue - fix the Add Another User button functionality
   const handleAddAnotherUser = () => {
-    // Simply set the isCreatingUser state to true to show the creation form
     setIsCreatingUser(true);
   };
 
@@ -37,7 +33,6 @@ const UserProfile = () => {
       {currentUser ? (
         <div>
           {isCreatingUser ? (
-            // Show the user creation form when isCreatingUser is true
             <div>
               <h2 className={styles.title}>Create Another Profile</h2>
               <form className={styles.createForm} onSubmit={handleCreateUser}>
@@ -91,7 +86,6 @@ const UserProfile = () => {
               </form>
             </div>
           ) : (
-            // Show the current user profile when isCreatingUser is false
             <div>
               <div className={styles.profileHeader}>
                 <Avatar avatarId={currentUser.avatarId} size="lg" />

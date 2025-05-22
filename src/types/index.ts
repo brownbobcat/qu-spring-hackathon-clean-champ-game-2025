@@ -3,7 +3,7 @@ export type User = {
   name: string;
   avatarId: number;
   points: number;
-  completedTasks: string[]; // IDs of completed tasks
+  completedTasks: string[];
   achievements: Achievement[];
   joinedDate: string;
 };
@@ -12,8 +12,8 @@ export type Zone = {
   id: string;
   name: string;
   description: string;
-  claimedBy: string | null; // User ID who claimed this zone
-  claimedAt: string | null; // Timestamp when zone was claimed
+  claimedBy: string | null;
+  claimedAt: string | null;
   position: {
     x: number;
     y: number;
@@ -37,8 +37,8 @@ export type Task = {
   difficulty: TaskDifficulty;
   pointValue: number;
   isCompleted: boolean;
-  completedBy: string | null; // User ID
-  completedAt: string | null; // Timestamp
+  completedBy: string | null;
+  completedAt: string | null;
   estimatedTimeMinutes: number;
 };
 
@@ -54,11 +54,11 @@ export type TimedChallenge = {
   id: string;
   title: string;
   description: string;
-  timeLimit: number; // in seconds
-  tasks: string[]; // IDs of tasks involved
+  timeLimit: number;
+  tasks: string[];
   bonusPoints: number;
   isActive: boolean;
   startedAt: string | null;
   completedAt: string | null;
-  completedBy: string | null; // User ID
+  completedBy: string | null;
 };

@@ -1,6 +1,5 @@
-/* src/components/Layout/Footer.module.css */
 .footer {
-  background-color: #1f2937; /* gray-800 */
+  background-color: #1f2937;
   color: white;
   padding: 1.5rem 0;
   margin-top: 2rem;
@@ -34,11 +33,11 @@
 }
 
 .logoYellow {
-  color: #fde047; /* yellow-300 */
+  color: #fde047;
 }
 
 .slogan {
-  color: #9ca3af; /* gray-400 */
+  color: #9ca3af;
   font-size: 0.875rem;
 }
 
@@ -59,7 +58,7 @@
 .linksList {
   list-style-type: none;
   font-size: 0.875rem;
-  color: #9ca3af; /* gray-400 */
+  color: #9ca3af;
 }
 
 .linksItem {
@@ -69,10 +68,10 @@
 .copyright {
   margin-top: 2rem;
   padding-top: 1rem;
-  border-top: 1px solid #374151; /* gray-700 */
+  border-top: 1px solid #374151;
   text-align: center;
   font-size: 0.875rem;
-  color: #9ca3af; /* gray-500 */
+  color: #9ca3af;
 }
 
 .techStack {

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import styles from "./Task.module.css";
 import { Task as TaskType, TaskDifficulty } from "../../types";
@@ -21,22 +20,16 @@ const Task: React.FC<TaskProps> = ({ task }) => {
       console.log(`⭐ Points before: ${currentUser?.points}`);
       console.log(`⭐ Task points value: ${task.pointValue}`);
 
-      // Call task completion method
       completeTask(task.id, currentUser.id);
 
-      // FOR DEBUGGING: Force update points directly if needed
-      // This shouldn't be necessary in normal operation
-      // console.log("Directly updating points as fallback");
       updateUserPoints(currentUser.id, task.pointValue);
 
-      // Log after a delay to see updated state
       setTimeout(() => {
         console.log(`⭐ Points after (delayed check): ${currentUser?.points}`);
       }, 500);
     }
   };
 
-  // Determine difficulty badge class
   const getDifficultyClass = (difficulty: TaskDifficulty) => {
     switch (difficulty) {
       case TaskDifficulty.EASY:

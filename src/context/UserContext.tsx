@@ -1,9 +1,7 @@
-// UserContext.tsx - Make sure you have these properly implemented
 import React, { createContext, useState, useContext, useEffect } from "react";
 import { getFromLocalStorage, saveToLocalStorage } from "../utils/localStorage";
 import { User, Achievement } from "../types";
 
-// Define the initial achievements
 const DEFAULT_ACHIEVEMENTS: Achievement[] = [
   {
     id: "achievement-1",
@@ -35,7 +33,6 @@ const DEFAULT_ACHIEVEMENTS: Achievement[] = [
   },
 ];
 
-// Define the default users (empty initially)
 const DEFAULT_USERS: User[] = [];
 
 type UserContextType = {
@@ -56,7 +53,6 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   const [users, setUsers] = useState<User[]>([]);
   const [currentUser, setCurrentUserState] = useState<User | null>(null);
 
-  // Load data from localStorage on mount
   useEffect(() => {
     const storedUsers = getFromLocalStorage("users") || DEFAULT_USERS;
     const storedCurrentUser = getFromLocalStorage("currentUser");
@@ -71,7 +67,6 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   }, []);
 
-  // Create a new user
   const createUser = (name: string, avatarId: number) => {
     const newUser: User = {
       id: `user-${Date.now()}`,
@@ -79,7 +74,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
       avatarId,
       points: 0,
       completedTasks: [],
-      achievements: [...DEFAULT_ACHIEVEMENTS], // Create a deep copy of the achievements
+      achievements: [...DEFAULT_ACHIEVEMENTS],
       joinedDate: new Date().toISOString(),
     };
 
@@ -87,12 +82,10 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
     setUsers(updatedUsers);
     setCurrentUserState(newUser);
 
-    // Save to localStorage
     saveToLocalStorage("users", updatedUsers);
     saveToLocalStorage("currentUser", newUser);
   };
 
-  // Update the current user
   const setCurrentUser = (userId: string) => {
     const user = users.find((u) => u.id === userId);
     if (user) {
@@ -101,7 +94,6 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   };
 
-  // THIS IS THE CRITICAL FUNCTION - Update user points
   const updateUserPoints = (userId: string, pointsToAdd: number) => {
     console.log(
       `Updating points for user ${userId}: adding ${pointsToAdd} points`
@@ -112,7 +104,6 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
       return;
     }
 
-    // Create a new array of users with updated points
     const updatedUsers = users.map((user) => {
       if (user.id === userId) {
         const updatedUser = {
@@ -124,7 +115,6 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
           `Updated user ${user.name}: points from ${user.points} to ${updatedUser.points}`
         );
 
-        // Check if this unlocks the Point Collector achievement
         if (
           updatedUser.points >= 100 &&
           updatedUser.achievements.find((a) => a.id === "achievement-4")
@@ -142,11 +132,9 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
       return user;
     });
 
-    // Update state and localStorage
     setUsers(updatedUsers);
     saveToLocalStorage("users", updatedUsers);
 
-    // If this is the current user, update the current user state too
     if (currentUser && currentUser.id === userId) {
       const updatedCurrentUser =
         updatedUsers.find((u) => u.id === userId) || null;
@@ -158,11 +146,9 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   };
 
-  // Complete a task
   const completeTask = (userId: string, taskId: string) => {
     console.log(`Marking task ${taskId} as completed for user ${userId}`);
 
-    // Only add if it's not already completed
     const user = users.find((u) => u.id === userId);
     if (!user || user.completedTasks.includes(taskId)) {
       return;
@@ -175,7 +161,6 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
           completedTasks: [...user.completedTasks, taskId],
         };
 
-        // If this is their first task, unlock the First Clean achievement
         if (updatedUser.completedTasks.length === 1) {
           updatedUser.achievements = updatedUser.achievements.map((a) =>
             a.id === "achievement-1"
@@ -189,11 +174,9 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
       return user;
     });
 
-    // Update state and localStorage
     setUsers(updatedUsers);
     saveToLocalStorage("users", updatedUsers);
 
-    // Update current user if needed
     if (currentUser && currentUser.id === userId) {
       const updatedCurrentUser =
         updatedUsers.find((u) => u.id === userId) || null;
@@ -204,7 +187,6 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   };
 
-  // Unlock an achievement
   const unlockAchievement = (userId: string, achievementId: string) => {
     console.log(`Unlocking achievement ${achievementId} for user ${userId}`);
 
@@ -221,11 +203,9 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
       return user;
     });
 
-    // Update state and localStorage
     setUsers(updatedUsers);
     saveToLocalStorage("users", updatedUsers);
 
-    // Update current user if needed
     if (currentUser && currentUser.id === userId) {
       const updatedCurrentUser =
         updatedUsers.find((u) => u.id === userId) || null;
